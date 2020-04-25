@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "connect": "^3.7.0",
     "formidable": "^1.2.2"
   }
 }
