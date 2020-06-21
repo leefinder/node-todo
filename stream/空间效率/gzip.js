@@ -9,7 +9,7 @@ fs.readFile(file, (err, buffer) => {
         })
     })
 })
-
+// 流实现
 fs.createReadStream(file)
 .pipe(zlib.createGzip())
 .pipe(fs.createWriteStream(file + '-stream.gz'))

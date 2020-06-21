@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "chance": "^1.1.6",
+    "change": "^0.0.0",
     "connect": "^3.7.0",
     "formidable": "^1.2.2"
   }

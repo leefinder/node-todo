@@ -2,6 +2,7 @@ const fs = require('fs')
 const zlib = require('zlib')
 const http = require('http')
 const path = require('path')
+const crypto = require('crypto') // 加密发送
 const file = process.argv[2]
 const server = process.argv[3]
 const options = {
@@ -10,7 +11,7 @@ const options = {
     path: '/',
     method: 'PUT',
     headers: {
-        filename: 'testCopy.txt',
+        filename: Date.now() + '.txt',
         'Content-Type': 'application/octet-stream',
         'Content-Encoding': 'gzip'
     }
@@ -21,6 +22,7 @@ const req = http.request(options, res => {
 
 fs.createReadStream(file)
 .pipe(zlib.createGzip())
+.pipe(crypto.createCipher('aes192', 'a_shared_secret'))
 .pipe(req)
 .on('finish', () => {
     console.log('File sent')
